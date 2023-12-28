@@ -36,7 +36,7 @@ try {
             $currentRestaurant = [
                 'id' => $row['restaurant_id'],
                 'name' => $row['restaurant_name'],
-                'food' => [] //["id" => 1, "name" => "Burger", "pantone_value" => 100]
+                'food' => [] //["id" => 1, "name" => "Burger", "price" => 100]
             ];
             // echo $currentRestaurant;
         }
@@ -46,7 +46,7 @@ try {
             $currentRestaurant['food'][] = [
                 'id' => $row['food_id'],
                 'name' => $row['food_name'],
-                'pantone_value' => $row['price']
+                'price' => $row['price']
             ];
         }
         // print_r($currentRestaurant); 
