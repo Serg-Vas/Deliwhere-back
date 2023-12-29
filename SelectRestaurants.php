@@ -9,6 +9,12 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 // Rest of your PHP code here
 
 // Establish database connection
+function AddCurrentRestaurant($currentRestaurant, $restaurants) {
+    if ($currentRestaurant !== null) {
+        $restaurants[] = $currentRestaurant;
+        return $restaurants;
+    }
+}
 
 require_once 'db_connection.php'; // Include the database connection script
 try {
@@ -30,9 +36,10 @@ try {
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // echo $currentRestaurant['id'],"-", $row['restaurant_id'], " ";
         if ($currentRestaurant === null || $currentRestaurant['id'] !== $row['restaurant_id']) {
-            if ($currentRestaurant !== null) {
-                $restaurants[] = $currentRestaurant;
-            }
+            // if ($currentRestaurant !== null) {
+            //     $restaurants[] = $currentRestaurant;
+            // }
+            $restaurants = AddCurrentRestaurant($currentRestaurant, $restaurants);
             $currentRestaurant = [
                 'id' => $row['restaurant_id'],
                 'name' => $row['restaurant_name'],
@@ -52,10 +59,11 @@ try {
         // print_r($currentRestaurant); 
         // print_r($row); 
     }
-    if ($currentRestaurant !== null) {
-        $restaurants[] = $currentRestaurant;
-    }
-
+    // if ($currentRestaurant !== null) {
+    //     $restaurants[] = $currentRestaurant;
+    // }
+    $restaurants = AddCurrentRestaurant($currentRestaurant, $restaurants);
+    
     // Convert array to JSON
     $json = json_encode($restaurants, JSON_PRETTY_PRINT);
 
