@@ -1,4 +1,9 @@
 <?php
+// Set headers to allow cross-origin requests
+header("Access-Control-Allow-Origin: *"); // Replace * with your allowed domain or use * to allow all domains
+// Set other CORS headers as needed (e.g., methods, headers, etc.)
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 // Check if the request is a POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     require_once 'db_connection.php'; // Include the database connection script
@@ -29,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the SQL statement
         $stmt->execute();
 
-        echo "User inserted successfully.";
+        // echo "User inserted successfully.";
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
