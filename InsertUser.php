@@ -6,6 +6,10 @@ header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
 // Check if the request is a POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $contentType = isset($_SERVER["CONTENT_TYPE"]) ? $_SERVER["CONTENT_TYPE"] : '';
+    if ($contentType !== "application/x-www-form-urlencoded") {
+        die("Script execution halted");
+    }
     require_once 'db_connection.php'; // Include the database connection script
     print_r($_POST);
     try {
@@ -17,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = $_POST['name'];
         echo $username;
         $email = $_POST['email'];
-        // $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
         $address = $_POST['address'];
         $phone_number = $_POST['phone'];
 
