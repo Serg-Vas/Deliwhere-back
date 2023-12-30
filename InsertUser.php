@@ -25,10 +25,12 @@ function Urlencoded($servername, $username, $password, $dbname) {
 
         // Execute the SQL statement
         $stmt->execute();
+        http_response_code(201);
 
         // echo "User inserted successfully.";
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
+        http_response_code(400);
     }
 }
 function Json($servername, $username, $password, $dbname, $decoded_data) {
@@ -39,7 +41,7 @@ function Json($servername, $username, $password, $dbname, $decoded_data) {
 
         // Get POST data from the form
         $username = $decoded_data['name'];
-        echo $username;
+        // echo $username;
         $email = $decoded_data['email'];
         $password = password_hash($decoded_data['password'], PASSWORD_DEFAULT); // Hash the password for security
         $address = $decoded_data['address'];
@@ -57,10 +59,12 @@ function Json($servername, $username, $password, $dbname, $decoded_data) {
 
         // Execute the SQL statement
         $stmt->execute();
+        http_response_code(201);
 
         // echo "User inserted successfully.";
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
+        http_response_code(400);
     }
 }
 // Set headers to allow cross-origin requests
