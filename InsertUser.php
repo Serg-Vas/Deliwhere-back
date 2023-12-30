@@ -8,6 +8,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contentType = isset($_SERVER["CONTENT_TYPE"]) ? $_SERVER["CONTENT_TYPE"] : '';
     if ($contentType !== "application/x-www-form-urlencoded") {
+        http_response_code(400);
         die("Script execution halted");
     }
     require_once 'db_connection.php'; // Include the database connection script
