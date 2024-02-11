@@ -1,0 +1,33 @@
+sudo apt update
+sudo apt upgrade
+sudo apt install php8.1-cli
+php --version
+mc
+pwd
+/mnt/d/work/Food shop/back
+code .
+cat default
+sudo nginx -s reload
+sudo nano default
+sudo nginx -t
+sudo systemctl reload nginx
+sudo nginx -s reload
+curl -sS https://getcomposer.org/installer -o composer-setup.php
+HASH="$(curl -sS https://composer.github.io/installer.sig)"
+php -r "if (hash_file('sha384', 'composer-setup.php') === '$HASH') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+rm composer-setup.php
+composer install
+sudo apt install nginx
+sudo service nginx status
+sudo service nginx start
+sudo apt install php-fpm
+sudo service php8.1-fpm status
+sudo service php8.1-fpm start
+sudo apt-get install php-mysql
+sudo service php8.1-fpm restart
+./composer.phar --version
+
+
+передать токен на фронт
+як використовувати токен на фронтенді який я отримав з бекенду

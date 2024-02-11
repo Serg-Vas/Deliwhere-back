@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     exit;
 }
 function checkUser($servername, $username, $password, $dbname, $input_username, $input_password) {
-    try {
+    try {   
         // Establish database connection
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         } else {
             // Handle error in retrieving POST data
-            http_response_code(400);
+            // http_response_code(400);
             echo "Error retrieving POST data.";
         }
     } elseif ($contentType == "application/x-www-form-urlencoded") {
