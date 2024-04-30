@@ -2,3 +2,6 @@ http://localhost:81/generateToken.php
 
 ###
 http://localhost:81/db_connection.php
+
+###
+curl http://win.test/generate-token.php

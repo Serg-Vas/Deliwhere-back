@@ -1,28 +1,27 @@
 <?php
+// Set headers to allow cross-origin requests
+header("Access-Control-Allow-Origin: *"); // Replace * with your allowed domain or use * to allow all domains
 
-require_once 'vendor/autoload.php';
+// Set other CORS headers as needed (e.g., methods, headers, etc.)
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 
-use Firebase\JWT\JWT;
+require 'vendor/autoload.php';
 
-// Replace 'your-secret-key' with your actual secret key
-$secretKey = 'your-secret-key';
+use \Firebase\JWT\JWT;
 
-// Replace 'Serge' and 'Password' with your actual username and password validation logic
-$username = 'Serge';
-$password = 'Password';
+$secret_key = "your_secret_key";
 
-// In a real-world scenario, validate the username and password before generating the token
-if ($username === 'Serge' && $password === 'Password') {
-    // Generate a JWT token
-    $tokenPayload = array(
-        'username' => $username,
-    );
+// User information (you might get this from a database)
+$user = [
+    "id" => 1,
+    "username" => "example_user",
+];
 
-    $token = JWT::encode($tokenPayload, $secretKey, 'HS256');
+// Encode the user information into a JWT
+$token = JWT::encode($user, $secret_key, 'HS256');
 
-    // Output the token
-    echo json_encode(array('token' => $token));
-} else {
-    header('HTTP/1.1 401 Unauthorized');
-    echo json_encode(array('message' => 'Invalid username or password'));
-}
+// Return the token to the frontend in the response body
+header('Content-Type: application/json');
+echo json_encode(["token" => $token]);
+?>
