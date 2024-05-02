@@ -8,8 +8,9 @@ try {
 
     // Fetch and display data
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        echo "ID: " . $row['id'] . " | Name: " . $row['name'] . " | Price: " . $row['price'] . " | Restaurant: " . $row['restaurant_id'] ."<br>";
+        echo "ID: " . $row['id'] . " | Name: " . $row['name'] . " | Price: " . $row['price'] . " | Restaurant: " . $row['restaurant_id'] . " | Image: <img src='data:image/jpeg;base64," . base64_encode($row['image']) . "' alt='Item Image'><br>";
     }
+    
 } catch(PDOException $e) {
     echo "Error: " . $e->getMessage();
 }

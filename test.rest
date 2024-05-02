@@ -5,3 +5,6 @@ http://localhost:81/db_connection.php
 
 ###
 curl http://win.test/generate-token.php
+
+###
+http://localhost/DeliveryBack/SelectRestaurants.php
