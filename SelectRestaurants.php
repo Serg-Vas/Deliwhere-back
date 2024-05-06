@@ -22,7 +22,7 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Query to fetch restaurant data along with their food items
-    $stmt = $pdo->prepare("SELECT r.id AS restaurant_id, r.name AS restaurant_name, f.id AS food_id, f.name AS food_name, f.price, f.image
+    $stmt = $pdo->prepare("SELECT r.id AS restaurant_id, r.name AS restaurant_name, r.logo AS restaurant_logo, f.id AS food_id, f.name AS food_name, f.price, f.image
                             FROM Restaurants r
                             LEFT JOIN Food f ON r.id = f.restaurant_id
                             ORDER BY r.id, f.id;
@@ -44,6 +44,7 @@ try {
             $currentRestaurant = [
                 'id' => $row['restaurant_id'],
                 'name' => $row['restaurant_name'],
+                'logo' => $row['restaurant_logo'],
                 'food' => [] //["id" => 1, "name" => "Burger", "price" => 100]
             ];
             // echo $currentRestaurant;

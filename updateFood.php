@@ -5,8 +5,8 @@ update field in php mysql
 <?php
 try{
 require_once 'db_connection.php';
-$path = "D:\work\Food shop\back\images\\milkshake.svg";
-$id = 15;
+$path = "D:\work\Food shop\back\images\\cheeseburger_BK.svg";
+$id = 8;
 // $name = 'Nachos';
 // $price = 3.95;
 // $restaurant_id = 5;
