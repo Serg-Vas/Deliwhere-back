@@ -8,3 +8,32 @@ curl http://win.test/generate-token.php
 
 ###
 http://localhost/DeliveryBack/SelectRestaurants.php
+
+###
+OPTIONS http://localhost/DeliveryBack/CreateOrder.php
+
+###
+OPTIONS http://localhost/DeliveryBack/InsertUser.php/users
+
+###
+client
+: 
+"йцу"
+comment
+: 
+"Your comment"
+deliveryAddress
+: 
+"йцу"
+foodItems[1]
+: 
+"2.95"
+foodItems[5]
+: 
+"2.85"
+foodItems[8]
+: 
+"4.2"
+totalPrice
+: 
+"10.00"
