@@ -12,16 +12,28 @@ use \Firebase\JWT\JWT;
 
 $secret_key = "your_secret_key";
 
-// User information (you might get this from a database)
+// Assuming you receive the input data as JSON in the request body
+$input_json = file_get_contents('php://input');
+$input_data = json_decode($input_json, true);
+
+// Extract user information from input data
 $user = [
-    "id" => 1,
-    "username" => "example_user",
+    "id" => $input_data["id"],
+    "name" => $input_data["name"],
+    // "phone" => $input_data["phone"],
+    // "email" => $input_data["email"],
+    // "address" => $input_data["address"],
+    // // You might want to consider hashing the password before storing it
+    // "password" => password_hash($input_data["password"], PASSWORD_DEFAULT),
 ];
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Encode the user information into a JWT
 $token = JWT::encode($user, $secret_key, 'HS256');
 
-// Return the token to the frontend in the response body
-header('Content-Type: application/json');
-echo json_encode(["token" => $token]);
-?>
+// Set the token in the Authorization header
+// header("Authorization: $token");
+
+// Respond with an empty JSON object to indicate success
+echo json_encode($token);
+}

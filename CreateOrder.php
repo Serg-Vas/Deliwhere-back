@@ -9,11 +9,30 @@ function submitOrder($servername, $username, $password, $dbname, $inputData) {
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+        // $json_data = '[{"id":1,"name":"Hamburger","amount":1},{"id":5,"name":"Hamburger","amount":1}]';
+
+        // Decode JSON data into an associative array
+        // $foodItems = json_decode($json_data, true);
+        
+        $foodItems = json_decode($inputData['foodItems'], true);
+        // Check if decoding was successful
+        if ($foodItems === null && json_last_error() !== JSON_ERROR_NONE) {
+            echo "Error decoding JSON: " . json_last_error_msg();
+            // Handle the error appropriately, such as returning an error response
+            exit;
+        }
+
+        // Check if $foodItems is an array
+        if (!is_array($foodItems)) {
+            echo "Error: Decoded JSON is not an array.";
+            // Handle the error appropriately
+            exit;
+        }
+
         // Extract order data from the input JSON
         $clientName = $inputData['client'];
         $deliveryAddress = $inputData['deliveryAddress'];
         $comment = $inputData['comment'];
-        $foodItems = $inputData['foodItems'];
         $totalPrice = $inputData['totalPrice'];
 
         // Insert order data into the 'orders' table
@@ -26,11 +45,11 @@ function submitOrder($servername, $username, $password, $dbname, $inputData) {
         $orderID = $pdo->lastInsertId(); // Get the ID of the inserted order
 
         // Insert order items into the 'order_items' table
-        $stmt = $pdo->prepare("INSERT INTO order_items (order_id, food_id, quantity) VALUES (:orderID, :foodID, :quantity)");
+        $stmt = $pdo->prepare("INSERT INTO order_items (order_id, food_id, quantity) VALUES (:orderID, :id, :amount)");
         foreach ($foodItems as $item) {
             $stmt->bindParam(':orderID', $orderID);
-            $stmt->bindParam(':foodID', $item['food_id']);
-            $stmt->bindParam(':quantity', $item['quantity']);
+            $stmt->bindParam(':id', $item['id']);
+            $stmt->bindParam(':amount', $item['amount']);
             $stmt->execute();
         }
 

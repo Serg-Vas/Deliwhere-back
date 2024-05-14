@@ -6,8 +6,8 @@ function Urlencoded($servername, $username, $password, $dbname) {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         // Get POST data from the form
-        $username = $_POST['name'];
         echo $username;
+        $username = $_POST['name'];
         $email = $_POST['email'];
         $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password for security
         $address = $_POST['address'];

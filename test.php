@@ -1,6 +1,6 @@
 <?php  
 //   echo "qwerty"; // Output the variable content
-  var_dump($_POST);
+  // var_dump($_POST);
 
 // // Отримання даних у форматі JSON, які були відправлені з форми
 // $data = json_decode(file_get_contents('php://input'), true);
@@ -18,14 +18,14 @@
 // */
 
 // Print Request Content Type
-$data = file_get_contents('php://input');
-echo '<br>';
-echo gettype($data);
-echo '<br>';
-var_dump($data);
-echo '<br>';
-$requestContentType = isset($_SERVER["CONTENT_TYPE"]) ? $_SERVER["CONTENT_TYPE"] : 'Not set';
-echo "Request Content Type: $requestContentType<br>";
+// $data = file_get_contents('php://input');
+// echo '<br>';
+// echo gettype($data);
+// echo '<br>';
+// var_dump($data);
+// echo '<br>';
+// $requestContentType = isset($_SERVER["CONTENT_TYPE"]) ? $_SERVER["CONTENT_TYPE"] : 'Not set';
+// echo "Request Content Type: $requestContentType<br>";
 // Simulate some processing for demonstration purposes
 // In a real-world scenario, you might handle the request and generate a response
 

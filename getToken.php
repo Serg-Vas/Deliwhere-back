@@ -14,13 +14,14 @@ use \Firebase\JWT\JWT;
 function verifyToken($token, $secret_key)
 {
     try {
-        JWT::decode($token, $secret_key, array('HS256'));
-        return true;
+        $decodedToken = JWT::decode($token, $secret_key, array('HS256'));
+
+        // Return the decoded token
+        return $decodedToken;
     } catch (Exception $e) {
-        return false;
+        return null; // Return null if token verification fails
     }
 }
-
 $secret_key = "your_secret_key";
 
 // Отримання токена з заголовка або параметра запиту
@@ -29,7 +30,7 @@ $token = isset(getallheaders()['Authorization']) ? getallheaders()['Authorizatio
 // Перевірка токена
 if ($token && verifyToken($token, $secret_key)) {
     // Якщо токен валідний, виводимо захищений контент
-    echo "This is a protected page. You have access!";
+    echo json_encode($decodedToken);
 } else {
     // Якщо токен невалідний або відсутній, виводимо повідомлення про відмову в доступі
     echo "Access denied. Please provide a valid token.";

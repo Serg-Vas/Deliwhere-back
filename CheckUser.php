@@ -3,12 +3,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     header('Access-Control-Allow-Origin: http://localhost:5173');
     // header('Access-Control-Allow-Origin: http://localhost:3000');
     header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header("Access-Control-Allow-Credentials: true");
     header('Access-Control-Allow-Headers: Content-Type, Authorization');
     http_response_code(200);
     exit;
 }
 function checkUser($servername, $username, $password, $dbname, $input_username, $input_password) {
-    try {   
+    try {
         // Establish database connection
         $pdo = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -30,8 +31,21 @@ function checkUser($servername, $username, $password, $dbname, $input_username, 
         // Check if user exists and password is correct
         if ($user && password_verify($input_password, $user['password'])) {
             // User exists and password is correct
+            $userData = array(
+                'id' => $user['id'],
+                'name' => $user['username'],
+                // 'password' => password_hash($user['password'], PASSWORD_DEFAULT),
+                // 'email' => $user['email'],
+                // 'phone' => $user['phone_number'],
+                // 'address' => $user['address']
+            );
+
+            // Set response headers and code
+            header('Content-Type: application/json');
             http_response_code(200);
-            echo "User authenticated successfully.";
+
+            // Send user data as JSON response
+            echo json_encode($userData);
         } else {
             // User does not exist or password is incorrect
             http_response_code(401);
@@ -46,7 +60,9 @@ function checkUser($servername, $username, $password, $dbname, $input_username, 
 // Set headers to allow cross-origin requests
 header("Access-Control-Allow-Origin: *"); // Replace * with your allowed domain or use * to allow all domains
 header("Access-Control-Allow-Methods: POST, OPTIONS");
+header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 
 // Check if the request is a POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
