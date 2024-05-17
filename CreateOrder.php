@@ -1,8 +1,6 @@
 <?php
-header("Access-Control-Allow-Origin: *"); // Replace * with your allowed domain or use * to allow all domains
-// Set other CORS headers as needed (e.g., methods, headers, etc.)
-header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
+require 'CORS.php';
+
 function submitOrder($servername, $username, $password, $dbname, $inputData) {
     try {
         // Establish database connection

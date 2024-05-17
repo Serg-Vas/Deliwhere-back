@@ -1,10 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header('Access-Control-Allow-Origin: http://localhost:5173');
-    // header('Access-Control-Allow-Origin: http://localhost:3000');
-    header('Access-Control-Allow-Methods: POST, OPTIONS');
-    header("Access-Control-Allow-Credentials: true");
-    header('Access-Control-Allow-Headers: Content-Type, Authorization');
+    require 'CORS.php';
     http_response_code(200);
     exit;
 }
@@ -57,12 +53,7 @@ function checkUser($servername, $username, $password, $dbname, $input_username, 
     }
 }
 
-// Set headers to allow cross-origin requests
-header("Access-Control-Allow-Origin: *"); // Replace * with your allowed domain or use * to allow all domains
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Credentials: true");
-header("Access-Control-Allow-Headers: Content-Type, Authorization");
-
+require 'CORS.php';
 
 // Check if the request is a POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
