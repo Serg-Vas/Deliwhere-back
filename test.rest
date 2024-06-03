@@ -24,6 +24,23 @@ http://deliveryback.test/getToken.php
 ###
 http://deliveryback.test/generateToken.php
 
+
+###
+http://localhost/DeliveryBack/info.php
+
+###
+http://localhost/DeliveryBack/db_connection.php
+
+###
+http://54.93.231.47/DeliveryBack/db_connection.php
+###
+http://54.93.231.47/DeliveryBack/SelectRestaurants.php
+###
+http://localhost/DeliveryBack/SelectRestaurants.php
+###
+http://54.93.231.47/DeliveryBack/mysql.php
+###
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIifQ.7tTuCK09jFTLiQaEmHvqeIv2cLnrFj7OLaSMLD_ZOc4
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIifQ.q22TrXMpqmEAzFXmrFJfzPU39eaqBQxrx9sUXvuRSBI
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MywidXNlcm5hbWUiOiJleGFtcGxlIn0.RW07fE_lw3QbWU8pxu7qLo3eLT73VLPKLDjmK6AXM0c
+

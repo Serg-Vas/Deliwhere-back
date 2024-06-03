@@ -23,8 +23,8 @@ try {
 
     // Query to fetch restaurant data along with their food items
     $stmt = $pdo->prepare("SELECT r.id AS restaurant_id, r.name AS restaurant_name, r.logo AS restaurant_logo, f.id AS food_id, f.name AS food_name, f.price, f.image
-                            FROM Restaurants r
-                            LEFT JOIN Food f ON r.id = f.restaurant_id
+                            FROM restaurants r
+                            LEFT JOIN food f ON r.id = f.restaurant_id
                             ORDER BY r.id, f.id;
                             ");
     $stmt->execute();
@@ -44,7 +44,8 @@ try {
             $currentRestaurant = [
                 'id' => $row['restaurant_id'],
                 'name' => $row['restaurant_name'],
-                'logo' => $row['restaurant_logo'],
+                // 'logo' => $row['restaurant_logo'],
+                'logo' => file_get_contents('./images/' . $row['restaurant_id'] . '.svg', true),
                 'food' => [] //["id" => 1, "name" => "Burger", "price" => 100]
             ];
             // echo $currentRestaurant;
@@ -56,7 +57,8 @@ try {
                 'id' => $row['food_id'],
                 'name' => $row['food_name'],
                 'price' => $row['price'],
-                'image' => $row['image']
+                // 'image' => $row['image']
+                'image' => file_get_contents('./foodimages/' . $row['food_id'] . '.svg', true),
             ];
         }
         // print_r($currentRestaurant); 
