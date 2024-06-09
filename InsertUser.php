@@ -116,6 +116,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //     die("Script execution halted");
     // }
 } else {
+    // if ($_SERVER["REQUEST_METHOD"] !== "OPTIONS") {
+    //     http_response_code(405);
+    //     echo json_encode(array("success" => false, "message" => "Invalid request method. This script accepts only POST requests."));
+    // }
     echo "Invalid request method. This script accepts only POST requests.";
 }
 ?>

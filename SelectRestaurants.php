@@ -45,7 +45,7 @@ try {
                 'id' => $row['restaurant_id'],
                 'name' => $row['restaurant_name'],
                 // 'logo' => $row['restaurant_logo'],
-                'logo' => file_get_contents('./images/' . $row['restaurant_id'] . '.svg', true),
+                // 'logo' => file_get_contents('./images/' . $row['restaurant_id'] . '.svg', true),
                 'food' => [] //["id" => 1, "name" => "Burger", "price" => 100]
             ];
             // echo $currentRestaurant;
@@ -58,7 +58,7 @@ try {
                 'name' => $row['food_name'],
                 'price' => $row['price'],
                 // 'image' => $row['image']
-                'image' => file_get_contents('./foodimages/' . $row['food_id'] . '.svg', true),
+                // 'image' => file_get_contents('./foodimages/' . $row['food_id'] . '.svg', true),
             ];
         }
         // print_r($currentRestaurant); 

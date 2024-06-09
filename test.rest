@@ -38,6 +38,8 @@ http://54.93.231.47/DeliveryBack/SelectRestaurants.php
 ###
 http://localhost/DeliveryBack/SelectRestaurants.php
 ###
+http://localhost/DeliveryBack/SelectRestaurant.php
+###
 http://54.93.231.47/DeliveryBack/mysql.php
 ###
 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJleGFtcGxlX3VzZXIifQ.7tTuCK09jFTLiQaEmHvqeIv2cLnrFj7OLaSMLD_ZOc4
